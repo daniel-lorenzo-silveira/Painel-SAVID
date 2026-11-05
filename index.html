@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard SAVID - STJ</title>
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Estilos organizados do projeto -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="dashboard-body">
+
+    <!-- CABEÇALHO COM IDENTIDADE STJ -->
+    <header class="main-header">
+        <div class="header-brand">
+            <div class="stj-logo-box">
+                <span class="stj-logo-text">STJ</span>
+            </div>
+            <div class="header-title">
+                <h1>Superior Tribunal de Justiça</h1>
+                <p>Seção de Áudio e Vídeo • SAVID | Escala e Monitoramento Operacional</p>
+            </div>
+        </div>
+
+        <div class="header-info">
+            <!-- Indicador de Status do Sistema -->
+            <div class="status-indicator">
+                <span class="status-dot"></span>
+                <span class="status-text">Sistema Operacional</span>
+            </div>
+
+            <!-- Relógio Digital -->
+            <div class="clock-container">
+                <div id="live-clock" class="clock-time">--:--:--</div>
+                <div id="live-date" class="clock-date">Carregando data...</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL WIDESCREEN -->
+    <main class="dashboard-main-wide">
+
+        <!-- PAINEL SUPERIOR: EVENTOS E DEMANDAS SIMULTÂNEAS / EM ALERTA (20 MIN) -->
+        <section class="simultaneous-section">
+            <div class="section-header-bar">
+                <h2 class="card-title">
+                    <i class="fa-solid fa-bolt icon-gold"></i> Demandas Ativas e Próximas (Alerta de 20 min)
+                </h2>
+                <span class="update-badge">Tempo Real</span>
+            </div>
+            
+            <!-- Grelha dinâmica preenchida pelo app.js -->
+            <div class="simultaneous-grid" id="simultaneous-grid">
+                <!-- Os cards simultâneos aparecem aqui automaticamente -->
+            </div>
+        </section>
+
+        <!-- SEÇÃO INFERIOR: ESCALA GERAL E EQUIPE TÉCNICO-ADMINISTRATIVA -->
+        <div class="lower-dashboard-grid">
+            
+            <!-- ESCALA COMPLETA DO DIA -->
+            <div class="schedule-card-wide">
+                <div class="card-header">
+                    <h2 class="card-title">
+                        <i class="fa-solid fa-calendar-days header-icon"></i> Escala Completa do Dia
+                    </h2>
+                    <span class="update-badge">Atualizada em tempo real</span>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th>Horário</th>
+                                <th>Demanda / Local</th>
+                                <th>Responsável</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="schedule-table-body">
+                            <!-- Preenchido dinamicamente pelo app.js -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ATIVIDADES TÉCNICO-ADMINISTRATIVAS -->
+            <div class="continuous-card-side">
+                <h3 class="card-title-sm">
+                    <i class="fa-solid fa-users-gear icon-green"></i> Atividades Técnico-Administrativas
+                </h3>
+                <div class="staff-grid-vertical" id="continuous-staff-grid">
+                    <!-- Preenchido dinamicamente pelo app.js -->
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- LETREIRO INFERIOR (TICKER) -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="ticker-label">
+                <i class="fa-solid fa-bullhorn icon-gold"></i> Avisos SAVID
+            </div>
+            <div class="marquee-container">
+                <div class="marquee-content">
+                    <span>⚠️ Atenção às diretrizes de segurança e manuseio dos equipamentos da Sala de Videoconferências II.</span>
+                    <span class="marquee-divider">•</span>
+                    <span>🔔 Próxima manutenção preventiva nos racks de áudio agendada para sexta-feira.</span>
+                    <span class="marquee-divider">•</span>
+                    <span>📌 Verifique a atualização da escala diária diretamente no sistema.</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<button onclick="testarAlertaVoz()" style="background: #D8B300; color: #001D2D; padding: 10px 20px; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; margin: 10px;">
+    🔊 Testar Alerta de Voz Agora
+</button>
+
+    <!-- Script principal de lógica -->
+    <script src="js/app.js"></script>
+</body>
+</html>

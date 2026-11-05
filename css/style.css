@@ -1,0 +1,512 @@
+/* ==========================================================================
+   DASHBOARD SAVID / STJ - ESTILOS WIDESCREEN & MULTI-EVENTOS
+   ========================================================================== */
+
+:root {
+    --stj-blue-dark: #001D2D;
+    --stj-blue-main: #002B42;
+    --stj-blue-border: #004164;
+    --stj-gold: #D8B300;
+    --stj-green: #4D9055;
+    --text-white: #ffffff;
+    --text-light: #cbd5e1;
+    --text-muted: #94a3b8;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Museo Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.dashboard-body {
+    background-color: var(--stj-blue-main);
+    color: var(--text-light);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* --- CABEÇALHO --- */
+.main-header {
+    background-color: var(--stj-blue-dark);
+    border-bottom: 1px solid var(--stj-blue-border);
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+}
+
+.header-brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.stj-logo-box {
+    background-color: var(--stj-blue-border);
+    border: 1px solid rgba(216, 179, 0, 0.4);
+    padding: 0.6rem;
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stj-logo-text {
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    color: var(--text-white);
+    font-size: 1.125rem;
+}
+
+.header-title h1 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--text-white);
+    text-transform: uppercase;
+}
+
+.header-title p {
+    font-size: 0.75rem;
+    color: var(--text-light);
+}
+
+.header-info {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--stj-blue-main);
+    padding: 0.375rem 0.875rem;
+    border-radius: 9999px;
+    border: 1px solid var(--stj-blue-border);
+}
+
+.status-dot {
+    width: 0.625rem;
+    height: 0.625rem;
+    border-radius: 9999px;
+    background-color: var(--stj-green);
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.status-text {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-light);
+}
+
+.clock-container {
+    text-align: right;
+}
+
+.clock-time {
+    font-size: 1.5rem;
+    font-weight: 900;
+    letter-spacing: 0.05em;
+    color: var(--stj-gold);
+    font-family: monospace;
+}
+
+.clock-date {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    text-transform: capitalize;
+}
+
+/* --- LAYOUT WIDESCREEN PRINCIPAL --- */
+.dashboard-main-wide {
+    flex: 1;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 1920px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* --- SEÇÃO DE EVENTOS SIMULTÂNEOS --- */
+.simultaneous-section {
+    background: linear-gradient(to right, var(--stj-blue-dark), var(--stj-blue-main));
+    border: 1px solid var(--stj-blue-border);
+    border-radius: 1rem;
+    padding: 1.25rem 1.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+}
+
+.section-header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--stj-blue-border);
+}
+
+.card-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-white);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.update-badge {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    background-color: var(--stj-blue-main);
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--stj-blue-border);
+}
+
+/* Grelha flexível para múltiplos eventos paralelos */
+.simultaneous-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+@media (min-width: 768px) {
+    .simultaneous-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1280px) {
+    .simultaneous-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.simultaneous-card {
+    background-color: rgba(0, 29, 45, 0.9);
+    border: 1px solid var(--stj-blue-border);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.sim-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    font-size: 0.75rem;
+}
+
+.sim-time {
+    color: var(--stj-gold);
+    font-weight: 700;
+    font-family: monospace;
+}
+
+.sim-location {
+    color: var(--text-muted);
+}
+
+.sim-title {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--text-white);
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+}
+
+.sim-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(0, 65, 100, 0.4);
+    padding-top: 0.5rem;
+    font-size: 0.75rem;
+}
+
+.sim-tech {
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+}
+
+.sim-status-active {
+    background-color: rgba(216, 179, 0, 0.2);
+    color: var(--stj-gold);
+    border: 1px solid rgba(216, 179, 0, 0.3);
+    padding: 0.125rem 0.5rem;
+    border-radius: 0.25rem;
+    font-weight: 700;
+}
+
+.sim-status-normal {
+    background-color: rgba(77, 144, 85, 0.2);
+    color: var(--stj-green);
+    border: 1px solid rgba(77, 144, 85, 0.3);
+    padding: 0.125rem 0.5rem;
+    border-radius: 0.25rem;
+    font-weight: 700;
+}
+
+/* --- SEÇÃO INFERIOR (ESCALA + EQUIPE TÉCNICA) --- */
+.lower-dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    flex: 1;
+}
+
+@media (min-width: 1024px) {
+    .lower-dashboard-grid {
+        grid-template-columns: 3fr 1fr;
+    }
+}
+
+.schedule-card-wide, .continuous-card-side {
+    background-color: rgba(0, 29, 45, 0.8);
+    border: 1px solid var(--stj-blue-border);
+    border-radius: 1rem;
+    padding: 1.25rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--stj-blue-border);
+}
+
+.card-title-sm {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--text-white);
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--stj-blue-border);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+    flex: 1;
+}
+
+.schedule-table {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+.schedule-table th {
+    color: var(--text-light);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding-bottom: 0.75rem;
+    font-weight: 600;
+    border-bottom: 1px solid var(--stj-blue-border);
+}
+
+.schedule-table td {
+    padding: 0.875rem 0;
+    font-size: 0.875rem;
+    border-bottom: 1px solid rgba(0, 65, 100, 0.5);
+}
+
+.time-col {
+    font-weight: 700;
+    color: var(--stj-gold);
+}
+
+.event-col {
+    color: var(--text-white);
+}
+
+.staff-col {
+    color: var(--text-light);
+}
+
+.font-bold {
+    font-weight: 700;
+}
+
+.row-highlight-light {
+    background-color: rgba(0, 65, 100, 0.2);
+}
+
+.row-active-event {
+    background-color: rgba(0, 65, 100, 0.4);
+    border-left: 4px solid var(--stj-gold);
+}
+
+/* --- ATIVIDADES TÉCNICO-ADMINISTRATIVAS --- */
+.staff-grid-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.staff-box {
+    background-color: var(--stj-blue-main);
+    border: 1px solid var(--stj-blue-border);
+    padding: 0.75rem;
+    border-radius: 0.75rem;
+    text-align: center;
+}
+
+.staff-shift {
+    font-size: 0.6875rem;
+    color: var(--text-light);
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.staff-name {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--text-white);
+}
+
+.supervisor-name {
+    color: var(--stj-green);
+}
+
+/* --- RODAPÉ (TICKER) --- */
+.main-footer {
+    background-color: var(--stj-blue-dark);
+    border-top: 1px solid var(--stj-blue-border);
+    overflow: hidden;
+    padding: 0.625rem 0;
+}
+
+.footer-container {
+    display: flex;
+    align-items: center;
+}
+
+.ticker-label {
+    background-color: var(--stj-blue-border);
+    color: var(--text-white);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.25rem 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    flex-shrink: 0;
+    border-right: 1px solid var(--stj-blue-main);
+}
+
+.marquee-container {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.marquee-content {
+    display: inline-block;
+    font-size: 0.75rem;
+    color: var(--text-light);
+    font-weight: 500;
+    animation: marquee 38s linear infinite;
+}
+
+.marquee-divider {
+    margin: 0 2rem;
+}
+
+/* --- ANIMAÇÕES E ALERTAS --- */
+@keyframes marquee {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: .5; }
+}
+
+@keyframes border-flash {
+    0%, 100% {
+        border-color: rgba(0, 65, 100, 0.6);
+        box-shadow: 0 0 15px rgba(216, 179, 0, 0.1);
+    }
+    50% {
+        border-color: rgba(216, 179, 0, 0.9);
+        box-shadow: 0 0 25px rgba(216, 179, 0, 0.4);
+    }
+}
+
+.alert-active {
+    animation: border-flash 1.5s infinite ease-in-out;
+}
+
+/* --- ESTILOS DE STATUS DOS EVENTOS --- */
+
+.sim-status-normal {
+    background-color: rgba(77, 144, 85, 0.15);
+    color: #4D9055;
+    border: 1px solid rgba(77, 144, 85, 0.3);
+    padding: 0.125rem 0.5rem;
+    border-radius: 0.25rem;
+    font-weight: 700;
+    font-size: 0.75rem;
+}
+
+.sim-status-active {
+    background-color: rgba(216, 179, 0, 0.2);
+    color: var(--stj-gold);
+    border: 1px solid rgba(216, 179, 0, 0.4);
+    padding: 0.125rem 0.5rem;
+    border-radius: 0.25rem;
+    font-weight: 700;
+    font-size: 0.75rem;
+}
+
+.sim-status-alert {
+    background-color: rgba(239, 68, 68, 0.2);
+    color: #f87171;
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    padding: 0.125rem 0.5rem;
+    border-radius: 0.25rem;
+    font-weight: 700;
+    font-size: 0.75rem;
+    animation: pulse 1s infinite;
+}
+
+.sim-status-finished {
+    background-color: rgba(148, 163, 184, 0.15);
+    color: var(--text-muted);
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    padding: 0.125rem 0.5rem;
+    border-radius: 0.25rem;
+    font-weight: 600;
+    font-size: 0.75rem;
+}
